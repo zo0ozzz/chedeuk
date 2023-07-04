@@ -14,6 +14,7 @@ const denom2 = 4;
 
 const answer = [5, 4];
 
+// 정답
 function solution(numer1, denom1, numer2, denom2) {
   let arr1 = [];
   let arr2 = [];
@@ -87,6 +88,101 @@ function solution(numer1, denom1, numer2, denom2) {
   return [result분자, result분모];
 }
 
+// 230705:
+function solution230705(numer1, denom1, numer2, denom2) {
+  return;
+}
+
+console.log(
+  "분수의덧셈: ",
+  solution230705(numer1, denom1, numer2, denom2)[0] === 5 &&
+    solution230705(numer1, denom1, numer2, denom2)[1] === 4
+);
+
+// 230704: 29분 32초
+// - 약수 배열 구하는 법.
+// - 배열 간 공통 요소 구하는 법.
+// - 최대공약수, 최소공배수 구하는 법.
+// - 주의) 분자에 곱할 수는 최소공배수 / 분모
+function solution230704(numer1, denom1, numer2, denom2) {
+  // - 최대공약수, 최소공배수
+  // - 최대공약수 구하는 법을 알고 있나?
+  //  - 약수 배열 만들기. 공통된 요소로 다시 배열 만들기. sorting.
+  // - 최소공배수 구하는 법을 알고 있나?
+  //  - 최대공약수 * 대상1 / 최대공약수 * 대상2 / 최대공약수
+  // - 이런 건 외워야 하나? 그때그때 논리적으로 떠올려낼 수 있기만 하면 될까?
+
+  const 분모1약수 = [];
+  const 분모2약수 = [];
+
+  for (i = 1; i <= denom1; i++) {
+    if (denom1 % i === 0) {
+      분모1약수.push(i);
+    }
+  }
+
+  for (i = 1; i <= denom2; i++) {
+    if (denom2 % i === 0) {
+      분모2약수.push(i);
+    }
+  }
+
+  // 두 배열 간 공통 요소 구하기
+  const 분모1분모2공약수 = [];
+
+  분모1약수.forEach((item1) => {
+    분모2약수.forEach((item2) => {
+      if (item1 === item2) {
+        분모1분모2공약수.push(item1);
+      }
+    });
+  });
+
+  // 내림차순 정렬.
+  분모1분모2공약수.sort((a, b) => b - a);
+
+  const 분모최대공약수 = 분모1분모2공약수[0];
+  const 분모최소공배수 =
+    (((분모최대공약수 * denom1) / 분모최대공약수) * denom2) / 분모최대공약수;
+
+  const 분자1에곱할수 = 분모최소공배수 / denom1;
+  const 분자2에곱할수 = 분모최소공배수 / denom2;
+
+  const 분자1 = numer1 * 분자1에곱할수;
+  const 분자2 = numer2 * 분자2에곱할수;
+  const 분자합 = 분자1 + 분자2;
+  const 분모 = 분모최소공배수;
+
+  // 기약분수화. 즉, 공약수 구하기. 아까 해봤지?
+  // 분자 분모 간의 공약수를 구해 가장 큰 수로 약분.
+  const 분자약수 = [];
+
+  for (i = 1; i <= 분자합; i++) {
+    if (분자합 % i === 0) {
+      분자약수.push(i);
+    }
+  }
+
+  분자약수.sort((a, b) => b - a);
+
+  let 분자분모최대공약수 = 0;
+
+  for (item1 of 분모1분모2공약수) {
+    for (item2 of 분자약수) {
+      if (item1 === item2) {
+        분자분모최대공약수 = item1;
+
+        break;
+      }
+    }
+  }
+
+  const 기약분자 = 분자합 / 분자분모최대공약수;
+  const 기약분모 = 분모 / 분자분모최대공약수;
+
+  return [기약분자, 기약분모];
+}
+
 // 230701: 35분
 // - 이번에도
 //   const parsedNumer1 = numer1 * divided2;
@@ -94,7 +190,6 @@ function solution(numer1, denom1, numer2, denom2) {
 //   여기서 2, 1을 바꿔 썼다. 이게 왤케 헷갈릴까.
 // - 코드가 너무 긴 것 같다. 좀 더 간단하게 하는 방법이 있을까.
 // - 최대공약수, 최소공배수를 구하는 방식을 확실히 익혀보자.
-
 function solution230701(numer1, denom1, numer2, denom2) {
   const 약수1 = [];
   const 약수2 = [];
@@ -162,9 +257,3 @@ function solution230701(numer1, denom1, numer2, denom2) {
 
   return [resultNumer, resultDenom];
 }
-
-console.log(
-  "분수의덧셈: ",
-  solution230701(numer1, denom1, numer2, denom2)[0] === 5 &&
-    solution230701(numer1, denom1, numer2, denom2)[1] === 4
-);

@@ -12,7 +12,6 @@ const array = [1, 2, 3, 3, 3, 4];
 const answer = 3;
 
 // 정답
-
 function solution(array) {
   if (array.length === 1) {
     return array[0];
@@ -48,6 +47,43 @@ function solution(array) {
   }
 }
 
+// * 230705:
+
+function solution230705(array) {
+  return;
+}
+
+console.log("최빈값 구하기: ", solution230705(array) === answer);
+
+// * 230704: 10분 48초
+// - reduce 좀 알 것 같음.
+// - sort도 좀 알 것 같음.
+// - 구조 분해 할당을 [, a] 이런 식으로 사용할 수 있다는 걸 알게 됨.
+
+function solution230704(array) {
+  const unique = [...new Set(array)];
+
+  const elementAndCount = unique.reduce((acc, item) => {
+    let count = 0;
+
+    for (i = 0; i < array.length; i++) {
+      if (item === array[i]) {
+        count++;
+      }
+    }
+
+    acc = [...acc, [item, count]];
+
+    return acc;
+  }, []);
+
+  elementAndCount.sort(([, a], [, b]) => b - a);
+
+  if (elementAndCount[0][0] === elementAndCount[1][0]) return -1;
+
+  return elementAndCount[0][0];
+}
+
 // * 230701: 13분
 // - 기존엔 map을 사용했음.
 // - 이번엔 reduce로 시도.
@@ -80,5 +116,3 @@ function solution230701(array) {
 
   return sortedArray[0][0];
 }
-
-console.log("최빈값 구하기: ", solution230701(array) === answer);
