@@ -49,11 +49,26 @@ function solution(array) {
 
 // * 230705:
 
-function solution230705(array) {
+function solution230713(array) {
+  // function howMany(arr, item) {
+  //   const reg = new RegExp()
+
+  //   return
+  // }
+
+  array.reduce((acc, item) => {
+    let count = 0;
+
+    for (el of array) {
+      if (item === el) {
+        count++;
+      }
+    }
+  }, -1);
   return;
 }
 
-console.log("최빈값 구하기: ", solution230705(array) === answer);
+console.log("최빈값 구하기: ", solution230713(array) === answer);
 
 // * 230704: 10분 48초
 // - reduce 좀 알 것 같음.

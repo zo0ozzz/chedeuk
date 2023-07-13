@@ -13,6 +13,7 @@ const answer = [2, 3, 5, 7];
 
 // 정답
 function solution(n) {
+  // 소인수분해 방법
   let i = 2;
 
   let arr = [];
@@ -59,4 +60,6 @@ function solution(n) {
   //     return [...new Set(yaksu)].filter(item => isSosu(item))
 }
 
-console.log(arrayToString(solution(n)) === "2357");
+function solution230713(n) {}
+
+console.log(ddd(solution230713(n)) === "2357");

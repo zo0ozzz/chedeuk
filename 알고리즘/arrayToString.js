@@ -1,3 +1,3 @@
-function arrayToString(arr) {
+function ddd(arr) {
   return arr.reduce((acc, cur) => (acc += String(cur)), "");
 }
