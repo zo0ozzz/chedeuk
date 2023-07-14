@@ -15,6 +15,7 @@ const my_string = "We are the world";
 
 const answer = "We arthwold";
 
+// 정답
 function solution(my_string) {
   const toArray = [...my_string];
 
@@ -31,8 +32,33 @@ function solution(my_string) {
   //     return toString;
 }
 
-function solution230713(my_string) {
+// 230715:
+function solution230715(my_string) {
   return;
 }
 
-console.log(solution230713(my_string) === answer);
+console.log(solution230715(my_string) === answer);
+
+//  230714: 1. 금방. 2. 해답 봄.
+//  1. Set
+//  - Set으로 해결하는 건 아주 쉬움.
+//    - 좀 불안한 게 Set이 어떻게 중복을 제거하는지를 모름.
+//    - 그래서 Set 없이도 문제를 해결할 수 있는 방법이 필요했음.
+//
+//  2. filter + indexOf
+//  - 결국 답지를 보고 말았음..
+//  - 이 요소가 같은 값을 가진 배열의 요소 중 가장 먼저 있는 요소인지 확인할 때는 indexOf를 활용하면 됨.
+//    - 다음엔 꼭 떠올려내자.
+function solution230714(my_string) {
+  // 2.
+  const toArray = my_string.split("");
+
+  return toArray
+    .filter((item, index) => index === toArray.indexOf(item))
+    .join("");
+
+  // 1.
+  // const unique = [...new Set(my_string.split(""))];
+
+  // return unique.join("");
+}

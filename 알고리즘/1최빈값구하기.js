@@ -47,34 +47,62 @@ function solution(array) {
   }
 }
 
-// * 230705:
-
-function solution230713(array) {
-  // function howMany(arr, item) {
-  //   const reg = new RegExp()
-
-  //   return
-  // }
-
-  array.reduce((acc, item) => {
-    let count = 0;
-
-    for (el of array) {
-      if (item === el) {
-        count++;
-      }
-    }
-  }, -1);
+function solution230715(array) {
   return;
 }
 
-console.log("최빈값 구하기: ", solution230713(array) === answer);
+console.log("최빈값 구하기: ", solution230715(array) === answer);
+
+//  * 230714: 5분, ???
+//  1.
+//  - 배열의 중복된 값을 구하는 기본적인 방법
+//    - 1. [...new Set(arr)]로 중복 없는 배열을 만들고
+//    - 2. 해당 배열과 원본 배열을 대상으로 반복문을 돌려 디폴트 count를 올리는 식.
+//      - 이 방식으로는 중첩 반복문이 필연적.
+//      - 중첩을 피해갈 수 있는 방법이 있을까...
+//  2.
+//  - 반복문 중첩을 피하려고 정규식을 써보긴 했는데.. 정규식도 결국엔 반복 아닌가..?
+function solution230714(array) {
+  // 2.
+  const unique = [...new Set(array)];
+  const stringFromArray = array.join("");
+
+  const result = unique
+    .map((item, index) => {
+      const reg = new RegExp(item, "g");
+
+      return [item, stringFromArray.match(reg).length];
+    })
+    .sort(([_1, a], [_2, b]) => b - a);
+
+  return result[0][1] === result[1][1] ? -1 : result[0][0];
+
+  // 1.
+  // const unique = [...new Set(array)];
+
+  // let pushed = [];
+
+  // for (item1 of unique) {
+  //   let count = 0;
+
+  //   for (item2 of array) {
+  //     if (item1 === item2) {
+  //       count++;
+  //     }
+  //   }
+
+  //   pushed.push([item1, count]);
+  // }
+
+  // pushed.sort(([_1, a], [_2, b]) => b - a);
+
+  // return pushed[0][1] === pushed[1][1] ? -1 : pushed[0][0];
+}
 
 // * 230704: 10분 48초
 // - reduce 좀 알 것 같음.
 // - sort도 좀 알 것 같음.
 // - 구조 분해 할당을 [, a] 이런 식으로 사용할 수 있다는 걸 알게 됨.
-
 function solution230704(array) {
   const unique = [...new Set(array)];
 
@@ -105,7 +133,6 @@ function solution230704(array) {
 //  - reduce가 익숙치 않아서 시간이 좀 걸림.
 // - 알고리즘 문제는 답이 중요하니까 원본 배열이 바뀌어도 신경 쓰지 말자. 일단은 답이다.
 // - 배열 순회 메서드 안에서 또 배열을 순회하는 게 좀 깔끔하지 않아 보임. 다른 방법이 있을까?
-
 function solution230701(array) {
   const unique = [...new Set(array)];
 

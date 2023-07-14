@@ -22,15 +22,19 @@ function solution(numbers, num1, num2) {
   return result;
 }
 
-function solution230705(numbers, num1, num2) {
+//  230715:
+function solution230715(numbers, num1, num2) {
   return;
 }
-console.log(
-  "배열자르기: ",
-  solution230705(numbers, num1, num2)[0] === 2 &&
-    solution230705(numbers, num1, num2)[1] === 3 &&
-    solution230705(numbers, num1, num2)[2] === 4
-);
+
+console.log("배열자르기: ", ddd(solution230715(numbers, num1, num2)) === "234");
+
+//  230714: 30초
+//  - slice(num1, num2)는 인덱스 num1부터 인덱스 num2 - 1까지를 복사한 배열을 반환한다는 걸 기억하셈!
+//    - 인덱스 num2까지 아님 주의.
+function solution230714(numbers, num1, num2) {
+  return numbers.slice(num1, num2 + 1);
+}
 
 // 230704
 // - slice(num1, num2)

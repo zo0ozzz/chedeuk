@@ -60,6 +60,28 @@ function solution(n) {
   //     return [...new Set(yaksu)].filter(item => isSosu(item))
 }
 
-function solution230713(n) {}
+function solution230715(n) {
+  return;
+}
 
-console.log(ddd(solution230713(n)) === "2357");
+console.log(ddd(solution230715(n)) === "2357");
+
+//  230714: 20분+(해답 봄.)
+//  - 소인수분해는 공식 같은 거니까 잘 기억해두자.
+//    - while true 범위를 설정하는 데 실패함.
+function solution230714(n) {
+  let i = 2;
+  let dividers = [];
+
+  while (i <= n) {
+    if (n % i === 0) {
+      dividers.push(i);
+
+      n = n / i;
+    } else {
+      i++;
+    }
+  }
+
+  return [...new Set(dividers)];
+}
