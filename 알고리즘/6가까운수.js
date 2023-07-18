@@ -58,11 +58,39 @@ function solution(array, n) {
   //     }
 }
 
-function solution230715(array, n) {
+function solution230719(array, n) {
   return;
 }
 
-console.log(solution230715(array, n) === 28);
+console.log(solution230719(array, n) === 28);
+
+// 230718: 금방. 2. 답 보고.
+// - 1.
+// - 이전에 푼 문제에서 힌트를 얻음. 가장 ~를 비교하고 가장 ~한 요소를 반환하는 방법.
+//   - 가장 ~에 대해 변수화 후 비교. 비교 결과에 따라 변수의 할당값을 변경.
+// - 2.
+// - 답지 봤다. 근데 슥 보니까 금방 이해할 수 있었음. 리턴값이 0이 되는 경우를 false로 활용하는 방법을 고려하기.
+function solution230718(array, n) {
+  // 2.
+  return array.sort((a, b) => Math.abs(n - a) - Math.abs(n - b) || a - b)[0];
+
+  // 1.
+  // let mostNearElement = null;
+  // let howNear = 1000;
+
+  // for (item of array) {
+  //   if (Math.abs(n - item) < 1000) {
+  //     mostNearElement = item;
+  //     howNear = Math.abs(n - item);
+  //   }
+
+  //   if (Math.abs(n - item) === howNear && item < mostNearElement) {
+  //     mostNearElement = item;
+  //   }
+  // }
+
+  // return mostNearElement;
+}
 
 //  230714: 13분 40초
 //  - sort의 콜백이 0이 나올 때(같은 길이만큼 떨어져 있을 때) 더 작은 수가 앞으로 오게 하는 방법을 떠올려내는 데 시간을 많이 썼음.

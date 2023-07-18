@@ -1,4 +1,5 @@
 // <최빈값 구하기>
+// https://school.programmers.co.kr/learn/courses/30/lessons/120812
 
 // 문제 설명
 // 최빈값은 주어진 값 중에서 가장 자주 나오는 값을 의미합니다. 정수 배열 array가 매개변수로 주어질 때, 최빈값을 return 하도록 solution 함수를 완성해보세요. 최빈값이 여러 개면 -1을 return 합니다.
@@ -47,11 +48,63 @@ function solution(array) {
   }
 }
 
-function solution230715(array) {
+function solution230719(array) {
   return;
 }
 
-console.log("최빈값 구하기: ", solution230715(array) === answer);
+console.log("최빈값 구하기: ", solution230719(array) === answer);
+
+//  * 230718:
+//  - 배열 요소들 간의 중복 count를 구할 땐 두 개의 배열 간의 관계를 통해 루프를 중첩하여 돌리는 것도 방법.
+//  - 하지만 객체를 사용해 요소에 대한 count를 업데이트해주는 방법을 쓰면 루프를 줄일 수 있음.
+//    - 다음 번엔 객체를 이용해 업데이트 하는 방법을 먼저 고려해보자.
+//      - 참고) 다음 번: 바로 뒷 차례. 다음번: 다음에 언젠가.
+function solution230718(array) {
+  let countObj = {};
+  let mostFrequentElement = null;
+  let maxCount = 0;
+
+  for (item of array) {
+    countObj[item] = (countObj[item] || 0) + 1;
+
+    if (countObj[item] > maxCount) {
+      mostFrequentElement = item;
+      maxCount = countObj[item];
+    }
+
+    if (countObj[item] === maxCount && item < mostFrequentElement) {
+      mostFrequentElement = item;
+    }
+  }
+
+  if (Object.values(countObj).filter((item) => item === maxCount).length > 1) {
+    return -1;
+  }
+
+  return mostFrequentElement;
+
+  // function count(element) {
+  //   let count = 0;
+
+  //   for (item of array) {
+  //     if (item === element) {
+  //       count++;
+  //     }
+  //   }
+
+  //   return count;
+  // }
+
+  // const unique = [...new Set(array)];
+
+  // const sorted = unique.sort((a, b) => count(b) - count(a));
+
+  // if (count(sorted[0]) === count(sorted[1])) {
+  //   return -1;
+  // }
+
+  // return sorted[0];
+}
 
 //  * 230714: 5분, ???
 //  1.

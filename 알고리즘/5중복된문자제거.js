@@ -32,12 +32,21 @@ function solution(my_string) {
   //     return toString;
 }
 
-// 230715:
-function solution230715(my_string) {
+function solution230719(my_string) {
   return;
 }
 
-console.log(solution230715(my_string) === answer);
+console.log(solution230719(my_string) === answer);
+
+// 230718: 오래 걸리진 않음
+// - index === my_string.indexOf(item) 이걸 떠올려내는 데 시간이 좀 걸림
+// - 기억력으로 쓴 것 같기도 하고.. 다음엔 자연스럽게 원리를 떠올려내보자
+function solution230718(my_string) {
+  return my_string
+    .split("")
+    .filter((item, index) => index === my_string.indexOf(item))
+    .join("");
+}
 
 //  230714: 1. 금방. 2. 해답 봄.
 //  1. Set

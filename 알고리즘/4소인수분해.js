@@ -60,11 +60,32 @@ function solution(n) {
   //     return [...new Set(yaksu)].filter(item => isSosu(item))
 }
 
-function solution230715(n) {
+function solution230719(n) {
   return;
 }
 
-console.log(ddd(solution230715(n)) === "2357");
+console.log(ddd(solution230719(n)) === "2357");
+
+// 230718: 꽤 금방
+// - 이번엔 else i++를 빼먹어서 인피니트루프에 빠져버림.
+// - 하지만 금방 고쳐냈죠~
+// - 소인수분해 코드는 이제 안 까먹을 것 같음.
+function solution230718(n) {
+  let i = 2;
+
+  let arr = [];
+
+  while (i <= n) {
+    if (n % i === 0) {
+      arr.push(i);
+      n = n / i;
+    } else {
+      i++;
+    }
+  }
+
+  return [...new Set(arr)].sort((a, b) => a - b);
+}
 
 //  230714: 20분+(해답 봄.)
 //  - 소인수분해는 공식 같은 거니까 잘 기억해두자.

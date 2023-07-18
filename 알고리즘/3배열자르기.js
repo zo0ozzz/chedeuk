@@ -1,4 +1,5 @@
 // <배열 자르기>
+// https://school.programmers.co.kr/learn/courses/30/lessons/120833
 
 // 문제 설명
 // 정수 배열 numbers와 정수 num1, num2가 매개변수로 주어질 때, numbers의 num1번 째 인덱스부터 num2번째 인덱스까지 자른 정수 배열을 return 하도록 solution 함수를 완성해보세요.
@@ -22,12 +23,17 @@ function solution(numbers, num1, num2) {
   return result;
 }
 
-//  230715:
-function solution230715(numbers, num1, num2) {
+function solution230719(numbers, num1, num2) {
   return;
 }
 
-console.log("배열자르기: ", ddd(solution230715(numbers, num1, num2)) === "234");
+console.log("배열자르기: ", ddd(solution230719(numbers, num1, num2)) === "234");
+
+//  230718: 순식간에
+//  - slice의 첫 번째 인자는 복사 시작 인덱스. 두 번째 인자는 복사 끝 인덱스 - 1.
+function solution230718(numbers, num1, num2) {
+  return numbers.slice(num1, num2 + 1);
+}
 
 //  230714: 30초
 //  - slice(num1, num2)는 인덱스 num1부터 인덱스 num2 - 1까지를 복사한 배열을 반환한다는 걸 기억하셈!
