@@ -13,6 +13,12 @@ const array = [1, 2, 3, 3, 3, 4];
 const answer = 3;
 
 // 정답
+// - 목적
+//   - 최빈값을 구하는 다양한 방법 익히기
+//     1. 중복 제거한 후에 기존 배열과 루프
+//       - 근데 이 방법에선 반복문이 중첩됨
+//     2. 요소에 따른 중복 카운팅을 객체로 반환
+//       - 루프가 있긴 하지만 중첩된 형태가 아니라 괜찮음.
 function solution(array) {
   if (array.length === 1) {
     return array[0];
@@ -48,11 +54,35 @@ function solution(array) {
   }
 }
 
-function solution230719(array) {
+230720;
+function solution230720(array) {
   return;
 }
 
-console.log("최빈값 구하기: ", solution230719(array) === answer);
+console.log("최빈값 구하기: ", solution230720(array) === answer);
+
+// 230719
+// - 객체를 구성하는 중에 필요한 값을 추적하는 방식에 좀 더 익숙해질 필요가 있음.
+function solution230719(array) {
+  let obj = {};
+  let element = null;
+  let max = 0;
+
+  for (item of array) {
+    obj[item] = (obj[item] || 0) + 1;
+
+    if (max < obj[item]) {
+      max = obj[item];
+      element = item;
+    }
+  }
+
+  if (Object.values(obj).filter((item) => item === max).length > 1) {
+    return -1;
+  }
+
+  return element;
+}
 
 //  * 230718:
 //  - 배열 요소들 간의 중복 count를 구할 땐 두 개의 배열 간의 관계를 통해 루프를 중첩하여 돌리는 것도 방법.

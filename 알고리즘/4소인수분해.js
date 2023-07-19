@@ -60,11 +60,30 @@ function solution(n) {
   //     return [...new Set(yaksu)].filter(item => isSosu(item))
 }
 
-function solution230719(n) {
+230720;
+function solution230720(n) {
   return;
 }
 
-console.log(ddd(solution230719(n)) === "2357");
+console.log("소인수분해: ", ddd(solution230720(n)) === "2357");
+
+// 230719: 한 번에 정답~
+// - 이번엔 while의 조건을 n > 1로 설정해봤음.
+function solution230719(n) {
+  let divider = 2;
+  let dividers = [];
+
+  while (n > 1) {
+    if (n % divider === 0) {
+      dividers.push(divider);
+      n = n / divider;
+    } else {
+      divider++;
+    }
+  }
+
+  return [...new Set(dividers)].sort((a, b) => a - b);
+}
 
 // 230718: 꽤 금방
 // - 이번엔 else i++를 빼먹어서 인피니트루프에 빠져버림.

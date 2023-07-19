@@ -32,11 +32,19 @@ function solution(my_string) {
   //     return toString;
 }
 
-function solution230719(my_string) {
+function solution230720(my_string) {
   return;
 }
 
-console.log(solution230719(my_string) === answer);
+console.log("중복된문자제거: ", solution230720(my_string) === answer);
+
+// 230719: 한 번에 해결~
+// - 원본 배열에서 뭔가를 제거할 땐 일단 filter를 적용할 생각을 해보기.
+function solution230719(my_string) {
+  return [...my_string]
+    .filter((item, index) => index === my_string.indexOf(item))
+    .join("");
+}
 
 // 230718: 오래 걸리진 않음
 // - index === my_string.indexOf(item) 이걸 떠올려내는 데 시간이 좀 걸림

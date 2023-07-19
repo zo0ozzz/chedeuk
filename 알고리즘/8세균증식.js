@@ -29,9 +29,15 @@ function solution(n, t) {
   //     return quantity;
 }
 
-// 230719
-function solution230719(n, t) {
+230720;
+function solution230720(n, t) {
   return;
 }
 
-console.log(solution230719(n, t) === answer);
+console.log("세균증식: ", solution230720(n, t) === answer);
+
+// 230719: 한 번에 해결~
+// - Math.pow(곱할 수, 몇 번)
+function solution230719(n, t) {
+  return n * Math.pow(2, t);
+}

@@ -33,9 +33,13 @@ function solution(my_string) {
   //     return my_string.replace(/[A-Z]/g, item => item.toLowerCase()).split('').sort().join('');
 }
 
-230719;
-function solution230719(my_string) {
-  return;
-}
+230720;
+function solution230720(my_string) {}
 
-console.log(solution230719(my_string) === answer);
+console.log("문자열정렬하기(2): ", solution230720(my_string) === answer);
+
+// 230719: 한 번에 해결~
+// - 문자열 전체에 .toLowerCase() 가능
+function solution230719(my_string) {
+  return [...my_string.toLowerCase()].sort().join("");
+}

@@ -25,9 +25,22 @@ function solution(n) {
   //     return Math.floor(제곱근) === 제곱근 ? 1 : 2;
 }
 
-// 230719
-function solution230719(n) {
+230720;
+function solution230720(n) {
   return;
 }
 
-console.log(solution230719(n) === answer);
+console.log("제곱수판별하기: ", solution230720(n) === answer);
+
+// 230719: 한 번에 해결~
+// - 한두 번만 더 해보고 목록에서 빼자.
+function solution230719(n) {
+  const root = Math.sqrt(n);
+
+  if (root === Math.floor(root)) {
+    return 1;
+  }
+
+  return 2;
+  // return Number.isInteger(Math.sqrt(n)) ? 1 : 2;
+}

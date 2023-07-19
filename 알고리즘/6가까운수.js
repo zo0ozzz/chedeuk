@@ -58,11 +58,18 @@ function solution(array, n) {
   //     }
 }
 
-function solution230719(array, n) {
+230720;
+function solution230720(array, n) {
   return;
 }
 
-console.log(solution230719(array, n) === 28);
+console.log(solution230720(array, n) === 28);
+
+// 230719: 한 번에 해결~
+// - 반환값이 0인 경우 0을 false로 활용하는 방법을 떠올려보자. ||와 연계하는 것도.
+function solution230719(array, n) {
+  return array.sort((a, b) => Math.abs(n - a) - Math.abs(n - b) || a - b)[0];
+}
 
 // 230718: 금방. 2. 답 보고.
 // - 1.

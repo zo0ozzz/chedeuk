@@ -17,17 +17,26 @@ const num2 = 3;
 const answer = [2, 3, 4];
 
 // 정답
+// - 목적
+//   - slice 메서드가 받는 매개 변수의 특성 숙지.
 function solution(numbers, num1, num2) {
   const result = numbers.slice(num1, num2 + 1);
 
   return result;
 }
 
-function solution230719(numbers, num1, num2) {
+230720;
+function solution230720(numbers, num1, num2) {
   return;
 }
 
-console.log("배열자르기: ", ddd(solution230719(numbers, num1, num2)) === "234");
+console.log("배열자르기: ", ddd(solution230720(numbers, num1, num2)) === "234");
+
+// 230719: 이제 이건 안 해도 되겠는데
+// - 두 번째 매개 변수는 복사할 마지막 index - 1. 그래서 n번 째 인덱스까지 자르려면 n + 1을 넘겨줘야 함.
+function solution230719(numbers, num1, num2) {
+  return numbers.slice(num1, num2 + 1);
+}
 
 //  230718: 순식간에
 //  - slice의 첫 번째 인자는 복사 시작 인덱스. 두 번째 인자는 복사 끝 인덱스 - 1.
